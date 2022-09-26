@@ -30,11 +30,25 @@ export default function App() {
 
         const indexAleatorio = Math.floor(Math.random() * palavras.length);
         const palavraAleatoria = palavras[indexAleatorio].split('');
-        
+
         setArrayPalavraAleatoria(palavraAleatoria);
         setPalvraEscolhida(palavraAleatoria.map((l) => "_"));
 
         console.log(palavras[indexAleatorio]);
+    }
+
+    function confirmarLetra(letra){
+
+        const palavra= arrayPalavraAleatoria.join("");
+        const palavraSemAcento= palavra.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+
+        if(palavraSemAcento.includes(letra)){
+            console.log("Boa jogador")
+
+        }else{
+            setAtualizarErros(atualizarErros + 1)
+            console.log("deu ruim jogador")
+        }
     }
 
     function test() {
@@ -57,10 +71,10 @@ export default function App() {
                 </div>
             </ImgEbutao>
             <Lista>
-                {alfabeto.map((p, index) =>
+                {alfabeto.map((l, index) =>
                     <li key={index}>
-                        <Letras disabled={destravarButao} onClick={test}>
-                            {p}
+                        <Letras disabled={destravarButao} onClick={() => confirmarLetra(l)}>
+                            {l}
                         </Letras>
                     </li>
                 )}
