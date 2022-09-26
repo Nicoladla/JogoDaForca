@@ -21,8 +21,10 @@ export default function App() {
 
     const [destravarButao, setDestravarButao] = useState(true);
     const [atualizarErros, setAtualizarErros] = useState(0);
-    const [arrayPalavraAleatoria, setArrayPalavraAleatoria] = useState();
-    const [palvraEscolhida, setPalvraEscolhida] = useState();
+    const [arrayPalavraAleatoria, setArrayPalavraAleatoria] = useState([]);
+    const [palvraEscolhida, setPalvraEscolhida] = useState([]);
+    const [letrasClicadas, setLetrasClicadas] = useState([]);
+    console.log(letrasClicadas)
 
     function escolherPalavra() {
         setDestravarButao(false);
@@ -37,17 +39,32 @@ export default function App() {
         console.log(palavras[indexAleatorio]);
     }
 
-    function confirmarLetra(letra){
+    function atualizarPalavraEscolhida(palavraSemAcento, letraClicada){
+        const palavraAtualizada= [...palvraEscolhida];
+
+        arrayPalavraAleatoria.forEach((l, i) => {
+
+            if(letraClicada === palavraSemAcento[i]){
+                palavraAtualizada[i]= l;
+
+            }
+        })
+
+        return palavraAtualizada;
+    }
+
+    function confirmarLetraEscolhida(letraClicada, index){
+
+        setLetrasClicadas([...letrasClicadas, index])
 
         const palavra= arrayPalavraAleatoria.join("");
         const palavraSemAcento= palavra.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 
-        if(palavraSemAcento.includes(letra)){
-            console.log("Boa jogador")
+        if(palavraSemAcento.includes(letraClicada)){
+            setPalvraEscolhida(atualizarPalavraEscolhida(palavraSemAcento, letraClicada))
 
         }else{
             setAtualizarErros(atualizarErros + 1)
-            console.log("deu ruim jogador")
         }
     }
 
@@ -73,7 +90,10 @@ export default function App() {
             <Lista>
                 {alfabeto.map((l, index) =>
                     <li key={index}>
-                        <Letras disabled={destravarButao} onClick={() => confirmarLetra(l)}>
+                        <Letras 
+                            disabled={letrasClicadas.includes(index) ? true : destravarButao} 
+                            onClick={() => confirmarLetraEscolhida(l, index)}
+                        >
                             {l}
                         </Letras>
                     </li>
