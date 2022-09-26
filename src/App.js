@@ -21,14 +21,29 @@ export default function App() {
 
     const [destravarButao, setDestravarButao] = useState(true);
     const [atualizarErros, setAtualizarErros] = useState(0);
+
     const [arrayPalavraAleatoria, setArrayPalavraAleatoria] = useState([]);
     const [palvraEscolhida, setPalvraEscolhida] = useState([]);
     const [letrasClicadas, setLetrasClicadas] = useState([]);
-    console.log(letrasClicadas)
+
+    const [palavraChutada, setPalavraChutada] = useState("");
+    const [resultadoDojogo, setResultadoDojogo] = useState("black")
+
+    function reiniciarJogo() {
+        setLetrasClicadas([])
+
+        setPalavraChutada("")
+
+        setResultadoDojogo("black")
+
+        setAtualizarErros(0);
+    }
 
     function escolherPalavra() {
+
+        reiniciarJogo()
+
         setDestravarButao(false);
-        setAtualizarErros(0);
 
         const indexAleatorio = Math.floor(Math.random() * palavras.length);
         const palavraAleatoria = palavras[indexAleatorio].split('');
@@ -39,37 +54,68 @@ export default function App() {
         console.log(palavras[indexAleatorio]);
     }
 
-    function atualizarPalavraEscolhida(palavraSemAcento, letraClicada){
-        const palavraAtualizada= [...palvraEscolhida];
+    function atualizarPalavraEscolhida(palavraSemAcento, letraClicada) {
+        const palavraAtualizada = [...palvraEscolhida];
 
         arrayPalavraAleatoria.forEach((l, i) => {
 
-            if(letraClicada === palavraSemAcento[i]){
-                palavraAtualizada[i]= l;
+            if (letraClicada === palavraSemAcento[i]) {
+                palavraAtualizada[i] = l;
 
             }
         })
 
+        finalizarJogoGanhou(palavraAtualizada)
+
         return palavraAtualizada;
     }
 
-    function confirmarLetraEscolhida(letraClicada, index){
+    function confirmarLetraEscolhida(letraClicada, index) {
 
         setLetrasClicadas([...letrasClicadas, index])
 
-        const palavra= arrayPalavraAleatoria.join("");
-        const palavraSemAcento= palavra.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+        const palavra = arrayPalavraAleatoria.join("");
+        const palavraSemAcento = palavra.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 
-        if(palavraSemAcento.includes(letraClicada)){
+        if (palavraSemAcento.includes(letraClicada)) {
             setPalvraEscolhida(atualizarPalavraEscolhida(palavraSemAcento, letraClicada))
 
-        }else{
-            setAtualizarErros(atualizarErros + 1)
+        } else {
+            setAtualizarErros(atualizarErros + 1);
+            finalizarJogoPerdeu(atualizarErros + 1);
         }
     }
 
-    function test() {
-        alert("Oii")
+    function chutarPalavra() {
+        const palavraDoJogo = arrayPalavraAleatoria.join("");
+
+        if (palavraChutada === palavraDoJogo) {
+            finalizarJogoGanhou(palavraDoJogo);
+
+        } else {
+            setAtualizarErros(6);
+            finalizarJogoPerdeu(6);
+        }
+    }
+
+    function finalizarJogoPerdeu(errosAtualizados) {
+
+        if (errosAtualizados === 6) {
+            setResultadoDojogo("red");
+            setPalvraEscolhida([...arrayPalavraAleatoria])
+            setDestravarButao(true);
+
+        }
+    }
+
+    function finalizarJogoGanhou(palavraAtualizada) {
+
+        if (!palavraAtualizada.includes("_")) {
+            setResultadoDojogo("green")
+            setDestravarButao(true);
+
+            setPalvraEscolhida([...arrayPalavraAleatoria])
+        }
     }
 
     return (
@@ -84,14 +130,14 @@ export default function App() {
                     <button onClick={escolherPalavra}>
                         Escolher palavra
                     </button>
-                    <p>{palvraEscolhida}</p>
+                    <Palavra cor={resultadoDojogo}>{palvraEscolhida}</Palavra>
                 </div>
             </ImgEbutao>
             <Lista>
                 {alfabeto.map((l, index) =>
                     <li key={index}>
-                        <Letras 
-                            disabled={letrasClicadas.includes(index) ? true : destravarButao} 
+                        <Letras
+                            disabled={letrasClicadas.includes(index) ? true : destravarButao}
                             onClick={() => confirmarLetraEscolhida(l, index)}
                         >
                             {l}
@@ -100,8 +146,14 @@ export default function App() {
                 )}
             </Lista>
             <Rodapé>
-                <input disabled={destravarButao} type="text" placeholder="Já sei a palavra!" />
-                <button onClick={test} disabled={destravarButao}>Chutar</button>
+                <input
+                    type="text"
+                    disabled={destravarButao}
+                    placeholder="Já sei a palavra!"
+                    onChange={(e) => setPalavraChutada(e.target.value)}
+                    value={palavraChutada}
+                />
+                <button onClick={chutarPalavra} disabled={destravarButao}>Chutar</button>
             </Rodapé>
         </>
     )
@@ -135,13 +187,14 @@ const ImgEbutao = styled.div`
         border-radius: 10px;
         cursor: pointer;
     }
+`
 
-    p{
-        font-weight: bold;
-        letter-spacing: 5px;
-        font-size: 40px;
-        margin-bottom: 40px;
-    }
+const Palavra = styled.p`
+    color: ${(props) => props.cor};
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-size: 40px;
+    margin-bottom: 40px;
 `
 
 const Lista = styled.ul`
