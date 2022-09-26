@@ -47,10 +47,12 @@ const GlobalStyle= createGlobalStyle`
 
     body{
         font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
     }
 
     *{
         box-sizing: border-box;
+        font-size: 18px;
     }
 `;
 
