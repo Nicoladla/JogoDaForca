@@ -50,8 +50,6 @@ export default function App() {
 
         setArrayPalavraAleatoria(palavraAleatoria);
         setPalvraEscolhida(palavraAleatoria.map((l) => "_"));
-
-        console.log(palavras[indexAleatorio]);
     }
 
     function atualizarPalavraEscolhida(palavraSemAcento, letraClicada) {
@@ -124,13 +122,13 @@ export default function App() {
 
             <ImgEbutao>
                 <figure>
-                    <img src={forcas[atualizarErros]} />
+                    <img src={forcas[atualizarErros]} data-identifier="game-image" />
                 </figure>
                 <div>
-                    <button onClick={escolherPalavra}>
+                    <button onClick={escolherPalavra} data-identifier="choose-word">
                         Escolher palavra
                     </button>
-                    <Palavra cor={resultadoDojogo}>{palvraEscolhida}</Palavra>
+                    <Palavra cor={resultadoDojogo} data-identifier="word">{palvraEscolhida}</Palavra>
                 </div>
             </ImgEbutao>
             <Lista>
@@ -139,6 +137,7 @@ export default function App() {
                         <Letras
                             disabled={letrasClicadas.includes(index) ? true : destravarButao}
                             onClick={() => confirmarLetraEscolhida(l, index)}
+                            data-identifier="letter"
                         >
                             {l}
                         </Letras>
@@ -152,8 +151,9 @@ export default function App() {
                     placeholder="Já sei a palavra!"
                     onChange={(e) => setPalavraChutada(e.target.value)}
                     value={palavraChutada}
+                    data-identifier="type-guess"
                 />
-                <button onClick={chutarPalavra} disabled={destravarButao}>Chutar</button>
+                <button onClick={chutarPalavra} disabled={destravarButao} data-identifier="guess-button">Chutar</button>
             </Rodapé>
         </>
     )
