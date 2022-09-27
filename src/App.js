@@ -10,6 +10,10 @@ import forca4 from "./imagens/forca4.png";
 import forca5 from "./imagens/forca5.png";
 import forca6 from "./imagens/forca6.png";
 
+import Jogo from "./Jogo";
+import Letras from "./Letras";
+import Chute from "./Chute";
+
 export default function App() {
     const alfabeto = [
         "a", "b", "c", "d", "e", "f", "g", "h", "i", "j",
@@ -120,132 +124,25 @@ export default function App() {
         <>
             <GlobalStyle />
 
-            <ImgEbutao>
-                <figure>
-                    <img src={forcas[atualizarErros]} data-identifier="game-image" />
-                </figure>
-                <div>
-                    <button onClick={escolherPalavra} data-identifier="choose-word">
-                        Escolher palavra
-                    </button>
-                    <Palavra cor={resultadoDojogo} data-identifier="word">{palvraEscolhida}</Palavra>
-                </div>
-            </ImgEbutao>
-            <Lista>
-                {alfabeto.map((l, index) =>
-                    <li key={index}>
-                        <Letras
-                            disabled={letrasClicadas.includes(index) ? true : destravarButao}
-                            onClick={() => confirmarLetraEscolhida(l, index)}
-                            data-identifier="letter"
-                        >
-                            {l}
-                        </Letras>
-                    </li>
-                )}
-            </Lista>
-            <Rodapé>
-                <input
-                    type="text"
-                    disabled={destravarButao}
-                    placeholder="Já sei a palavra!"
-                    onChange={(e) => setPalavraChutada(e.target.value)}
-                    value={palavraChutada}
-                    data-identifier="type-guess"
-                />
-                <button onClick={chutarPalavra} disabled={destravarButao} data-identifier="guess-button">Chutar</button>
-            </Rodapé>
+            <Jogo
+                forcas={forcas}
+                atualizarErros={atualizarErros}
+                escolherPalavra={escolherPalavra}
+                resultadoDojogo={resultadoDojogo}
+                palvraEscolhida={palvraEscolhida}
+            />
+            <Letras
+                alfabeto={alfabeto}
+                letrasClicadas={letrasClicadas}
+                destravarButao={destravarButao}
+                confirmarLetraEscolhida={confirmarLetraEscolhida}
+            />
+            <Chute
+                destravarButao={destravarButao}
+                setPalavraChutada={setPalavraChutada}
+                palavraChutada={palavraChutada}
+                chutarPalavra={chutarPalavra}
+            />
         </>
     )
 }
-
-const ImgEbutao = styled.div`
-    margin-top: 50px;
-    display: flex;
-    justify-content: center;
-
-    img{
-        width: 400px;
-    }
-
-    div{
-        margin-left: 200px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-end;
-    }
-
-    button{
-        color: #f2f2f2;
-        font-weight: bold;
-        background-color: #2E8D16;
-        width: 200px;
-        height: 50px;
-        margin-top: 40px;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-    }
-`
-
-const Palavra = styled.p`
-    color: ${(props) => props.cor};
-    font-weight: bold;
-    letter-spacing: 5px;
-    font-size: 40px;
-    margin-bottom: 40px;
-`
-
-const Lista = styled.ul`
-    width: 660px;
-    margin: 30px auto;
-    padding-left: 10px;
-    display: flex;
-    flex-wrap: wrap;
-`
-
-const Letras = styled.button`
-        background-color: ${(props) => props.disabled ? "#9faab5" : "#e1ecf4"};
-        color: ${(props) => props.disabled ? "#79828c" : "#4a789d"};
-        text-transform: uppercase;
-        font-weight: bold;
-        width: 40px;
-        height: 40px;
-        margin: 0 10px 10px 0;
-        border: ${(props) => props.disabled ? "none" : "2px solid #4a789d"};
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-`
-
-const Rodapé = styled.footer`
-    display: flex;
-    justify-content: center;
-
-    input{
-        height: 40px;
-        border: 2px solid #528cba;
-        border-radius: 5px;
-        text-align: center;
-
-        &:focus{
-            color: black;
-            outline: none;
-        }
-    }
-
-    button{
-        background-color: #e1ecf4;
-        color: #528cba;
-        font-weight: bold;
-        width: 100px;
-        height: 40px;
-        margin-left: 15px;
-        border: 1px solid #528cba;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-`
