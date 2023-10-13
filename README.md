@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Jogo da Forca
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse é um clássico! Quem nunca jogou o jogo da forca na escola? Ou então, com os amigos? 
 
-## Available Scripts
+Esse projeto tem a proposta de relembrar os bons momentos que passamos jogando esse game, mas dessa vez, com uma interface dinâmica e atrativa, de fácil usabilidade e com uma grande variedade de palavras.
 
-In the project directory, you can run:
+Para jogar é simples, veja:
 
-### `npm start`
+  * A primeira coisa a ser feita é selecionar o botão "Escolher palavra";
+  * Nesse momento, a palavra será escolhida pelo game e os botões serão desbloqueados. Seu objetivo será descobrir qual é a palavra;
+  * ``OBS``: você notará que aparecerá alguns traços, eles irão indicar o tamanho da palavra escolhida;
+  * Agora, você já poderá tentar descobrir qual é a palavra. Para isso, é só clicar na letra desejada;
+  * Caso você escolha alguma letra que não exista na palavra, o bonequinho começará a se formar na forca;
+  * Se o bonequinho for enforcado é **Game over**;
+  * Caso você já saiba qual é a palavra, você pode escrever no campo "Já sei a palavra" e chutar.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Confira o design e usabilidade do game:
 
-### `npm test`
+<p align="start">
+  <img width="600" src="src/imagens/JogoDaForca-Animação.gif" alt="Instagram-gif">
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Você pode acessar essa aplicação nesse link:
+  [https://instagram-react-nicoladla.vercel.app/](https://instagram-react-nicoladla.vercel.app/)
 
-### `npm run build`
+- Você também pode acessar o repositório de uma primeira versão dessa mesma aplicação, que foi feita usando **HTML**:
+  [https://github.com/Nicoladla/Instagram-Clone](https://github.com/Nicoladla/Instagram-Clone)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Informações técnicas
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Essa aplicação foi desenvolvida utilizando as tecnologias:
 
-### `npm run eject`
+- CSS
+- JavaScript
+- React.js
+- IonIcons
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Como iniciar o projeto na minha máquina?
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- O primeiro passo é você fazer o download do projeto para sua máquina: [Download ZIP](https://github.com/Nicoladla/Instagram_React/archive/refs/heads/main.zip)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Ou então clonar esse repositório através do seu terminal:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  ```
+  git clone https://github.com/Nicoladla/Instagram_React.git
+  ```
 
-## Learn More
+- Com o projeto na sua máquina, abra o seu editor de código favorito e então, dentro do seu projeto no seu terminal, execute o comando:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  ```
+  npm install
+  ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Após isso, basta inicializar sua aplicação:
 
-### Code Splitting
+  ```
+  npm start
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Por fim, ao executar esse comando, uma janela no seu navegador se abrirá com a aplicação, mas caso isso não ocorra, você poderá acessá-lá colocando esse link no seu navegador:
+  ```
+  localhost:3000/
+  ```
