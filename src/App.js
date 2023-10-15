@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import { useState } from "react";
 import palavras from "./palavras";

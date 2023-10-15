@@ -6,7 +6,7 @@ Esse projeto tem a proposta de relembrar os bons momentos que passamos jogando e
 
 Para jogar é simples, veja:
 
-  * A primeira coisa a ser feita é selecionar o botão "Escolher palavra";
+  * A primeira coisa a ser feita é clicar no botão "Escolher palavra";
   * Nesse momento, a palavra será escolhida pelo game e os botões serão desbloqueados. Seu objetivo será descobrir qual é a palavra;
   * ``OBS``: você notará que aparecerá alguns traços, eles irão indicar o tamanho da palavra escolhida;
   * Agora, você já poderá tentar descobrir qual é a palavra. Para isso, é só clicar na letra desejada;
@@ -23,10 +23,10 @@ Para jogar é simples, veja:
 </p>
 
 - Você pode acessar essa aplicação nesse link:
-  [https://instagram-react-nicoladla.vercel.app/](https://instagram-react-nicoladla.vercel.app/)
+  [https://jogo-da-forca-woad.vercel.app/](https://jogo-da-forca-woad.vercel.app/)
 
-- Você também pode acessar o repositório de uma primeira versão dessa mesma aplicação, que foi feita usando **HTML**:
-  [https://github.com/Nicoladla/Instagram-Clone](https://github.com/Nicoladla/Instagram-Clone)
+- Você também pode acessar o repositório de outro game clássico, que foi feita usando **HTML**:
+  [https://github.com/Nicoladla/ParrotCardGame](https://github.com/Nicoladla/ParrotCardGame)
 
 ---
 
@@ -37,16 +37,16 @@ Essa aplicação foi desenvolvida utilizando as tecnologias:
 - CSS
 - JavaScript
 - React.js
-- IonIcons
+- Styled Components
 
 ### Como iniciar o projeto na minha máquina?
 
-- O primeiro passo é você fazer o download do projeto para sua máquina: [Download ZIP](https://github.com/Nicoladla/Instagram_React/archive/refs/heads/main.zip)
+- O primeiro passo é você fazer o download do projeto para sua máquina: [Download ZIP](https://github.com/Nicoladla/JogoDaForca/archive/refs/heads/main.zip)
 
 - Ou então clonar esse repositório através do seu terminal:
 
   ```
-  git clone https://github.com/Nicoladla/Instagram_React.git
+  git clone https://github.com/Nicoladla/JogoDaForca.git
   ```
 
 - Com o projeto na sua máquina, abra o seu editor de código favorito e então, dentro do seu projeto no seu terminal, execute o comando:
