@@ -34,7 +34,6 @@ Para jogar é simples, veja:
 
 Essa aplicação foi desenvolvida utilizando as tecnologias:
 
-- CSS
 - JavaScript
 - React.js
 - Styled Components
